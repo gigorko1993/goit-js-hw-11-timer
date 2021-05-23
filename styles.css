@@ -1,0 +1,21 @@
+#timer-1 {
+  display: flex;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.field:not(:last-child) {
+  margin-right: 15px;
+}
+
+.value {
+  font-size: 40px;
+}
+.label {
+  font-size: 20px;
+  color: lightgray;
+}
