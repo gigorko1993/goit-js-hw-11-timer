@@ -54,10 +54,6 @@ export class CountdownTimer {
     const timerActivity = setInterval(() => {
       if (this.targetDate <= new Date()) {
         clearInterval(timerActivity);
-        // this.element.dayEl.innerHTML = 'TI';
-        // this.element.hourEl.innerHTML = 'ME';
-        // this.element.minEl.innerHTML = 'ST';
-        // this.element.secEl.innerHTML = 'OP';
         return;
       }
 
@@ -66,7 +62,3 @@ export class CountdownTimer {
   }
 }
 
-// const timer = new CountdownTimer({
-//   selector: "#timer-1",
-//   targetDate: new Date("Jun 24, 2021"),
-// });
