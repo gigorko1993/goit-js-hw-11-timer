@@ -6,21 +6,17 @@ export class CountdownTimer {
   }
 
   getElements(elementId) {
-    const ref = {
-      dayEl: document.querySelector(`${elementId} [data-value="days"]`),
-      hourEl: document.querySelector(`${elementId} [data-value="hours"]`),
-      minEl: document.querySelector(`${elementId} [data-value="mins"]`),
-      secEl: document.querySelector(`${elementId} [data-value="secs"]`),
-    };
-
-    return ref;
+    const timerEl = document.querySelector(`${elementId}`);
+    const dayEl = timerEl.querySelectorAll(`[data-value="days"]`);
+    const hourEl = timerEl.querySelectorAll(`[data-value="hours"]`);
+    const minEl = timerEl.querySelectorAll(`[data-value="mins"]`);
+    const secEl = timerEl.querySelectorAll(`[data-value="secs"]`);
+    return { dayEl, hourEl, minEl, secEl };
   }
 
   convertTime(time) {
     const formatingDate = value => {
-      if (value === 0) {
-        return "00";
-      } else if (value < 10) {
+      if (value < 10) {
         return "0" + value;
       }
       return value;
@@ -44,10 +40,10 @@ export class CountdownTimer {
   elTimeTextChange() {
     const startingDate = this.convertTime(this.targetDate - new Date());
 
-    this.element.dayEl.innerHTML = startingDate.day;
-    this.element.hourEl.innerHTML = startingDate.hour;
-    this.element.minEl.innerHTML = startingDate.min;
-    this.element.secEl.innerHTML = startingDate.sec;
+    this.element.dayEl.forEach(el => (el.textContent = startingDate.day));
+    this.element.hourEl.forEach(el => (el.textContent = startingDate.hour));
+    this.element.minEl.forEach(el => (el.textContent = startingDate.min));
+    this.element.secEl.forEach(el => (el.textContent = startingDate.sec));
   }
 
   start() {
@@ -61,4 +57,3 @@ export class CountdownTimer {
     }, 1000);
   }
 }
-
